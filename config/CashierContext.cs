@@ -1,3 +1,4 @@
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace air_ticket_cashier
@@ -9,9 +10,10 @@ namespace air_ticket_cashier
         public DbSet<Direction> Directions { get; set; }
         public DbSet<Flight> Flights { get; set; }
 
-        public CashierContext(DbContextOptions<CashierContext> options)
-            : base(options)
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Direction>().ToTable("");
+            modelBuilder.Entity<Flight>().ToTable("Schedule");
         }
     }
 }
