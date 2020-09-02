@@ -1,0 +1,22 @@
+using System.Linq;
+
+namespace air_ticket_cashier
+{
+    public class DirectionService
+    {
+        public Direction GetById(int id)
+        {
+            Direction direction = null;
+            using (var context = new CashierContext())
+            {
+
+                direction = context.Directions
+                                     .Where(s => s.ID == id)
+                                     .FirstOrDefault<Direction>();
+                return direction;
+            }
+        }
+
+
+    }
+}
