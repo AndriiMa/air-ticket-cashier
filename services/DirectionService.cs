@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace air_ticket_cashier
@@ -9,7 +10,6 @@ namespace air_ticket_cashier
             Direction direction = null;
             using (var context = new CashierContext())
             {
-
                 direction = context.Directions
                                      .Where(s => s.ID == id)
                                      .FirstOrDefault<Direction>();
@@ -17,6 +17,16 @@ namespace air_ticket_cashier
             }
         }
 
-
+        public List<Direction> GetAvailable()
+        {
+            List<Direction> directions = null;
+            using (var context = new CashierContext())
+            {
+                directions = context.Directions
+                                     .Where(s => s.Avaliable == true)
+                                     .ToList();
+                return directions;
+            }
+        }
     }
 }
