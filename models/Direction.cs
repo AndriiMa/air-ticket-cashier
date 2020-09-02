@@ -5,7 +5,6 @@ namespace air_ticket_cashier
 
     public class Direction
     {
-
         public int ID { get; set; }
         public String FromCountry { get; set; }
         public String ToCountry { get; set; }
