@@ -12,6 +12,8 @@ namespace air_ticket_cashier
         public bool Avaliable { get; set; }
         public int MaxPlaces { get; set; }
         public String PlaneCode { get; set; }
+        public DirectionType DirectionType { get; set; }
+
     }
 
 }
