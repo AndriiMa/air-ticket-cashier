@@ -29,6 +29,7 @@ namespace air_ticket_cashier
             services.AddControllers();
             services.AddDbContext<CashierContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("CashierContext")));
+            services.AddSingleton<DirectionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
