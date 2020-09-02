@@ -5,10 +5,10 @@ namespace air_ticket_cashier
 
     public class Flight
     {
-        public int id { get; set; }
-        public DateTime deparureAt { get; set; }
-        public DateTime arriveAt { get; set; }
-        public bool available { get; set; }
+        public int ID { get; set; }
+        public DateTime DeparureAt { get; set; }
+        public DateTime ArriveAt { get; set; }
+        public bool Available { get; set; }
 
     }
 
