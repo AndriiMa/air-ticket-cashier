@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace air_ticket_cashier
@@ -14,7 +15,11 @@ namespace air_ticket_cashier
             this.directionService = directionService;
         }
 
-
+        [HttpGet("/available")]
+        public List<Direction> GetAvailableDirections()
+        {
+            return directionService.GetAvailable();
+        }
 
     }
 
