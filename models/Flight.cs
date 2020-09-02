@@ -9,6 +9,7 @@ namespace air_ticket_cashier
         public DateTime DeparureAt { get; set; }
         public DateTime ArriveAt { get; set; }
         public bool Available { get; set; }
+        public Direction Direction { get; set; }
 
     }
 
