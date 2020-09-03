@@ -15,7 +15,10 @@ namespace air_ticket_cashier
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresEnum<DirectionType>();
+            modelBuilder.HasPostgresEnum<PassengerSex>();
+
             modelBuilder.UseSerialColumns();
+
             modelBuilder.Entity<Direction>().ToTable("direction");
             modelBuilder.Entity<Flight>().ToTable("flight");
         }
