@@ -28,7 +28,8 @@ namespace air_ticket_cashier
         {
             services.AddControllers();
             services.AddDbContext<CashierContext>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("CashierContext")));
+            options.UseNpgsql(Configuration.GetConnectionString("CashierContext"))
+            .UseSnakeCaseNamingConvention());
             services.AddScoped<DirectionService>();
         }
 
