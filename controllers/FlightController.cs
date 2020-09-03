@@ -5,9 +5,8 @@ namespace air_ticket_cashier
 {
     [ApiController]
     [Route("/api/flights")]
-    public class FlightController
+    public class FlightController : ControllerBase
     {
-
         private FlightService flightService;
 
         public FlightController(FlightService flightService)
