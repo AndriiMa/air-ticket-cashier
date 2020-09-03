@@ -11,5 +11,7 @@ namespace air_ticket_cashier
         public String CountryCode { get; set; }
         public String Nationality { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public PassengerSex PassengerSex { get; set; }
+
     }
 }
