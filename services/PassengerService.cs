@@ -25,13 +25,11 @@ namespace air_ticket_cashier
             return passenger;
         }
 
-        public void Update(Passenger passengerUpdates)
+        public void Update(PassengerInfoDto passengerUpdates)
         {
             Passenger passenger = context.Passengers.FirstOrDefault(p => p.ID == passengerUpdates.ID);
             passenger.FirstName = passengerUpdates.LastName;
             passenger.LastName = passengerUpdates.LastName;
-            passenger.PassengerSex = passengerUpdates.PassengerSex;
-            
 
             context.Passengers.Update(passenger);
             context.SaveChanges();
