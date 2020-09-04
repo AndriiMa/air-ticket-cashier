@@ -22,6 +22,7 @@ namespace air_ticket_cashier
         public Ticket Save(Ticket ticket)
         {
             context.Tickets.Add(ticket);
+            context.SaveChanges();
             return ticket;
         }
 
