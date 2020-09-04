@@ -20,13 +20,13 @@ namespace air_ticket_cashier
         }
 
         [HttpPost("")]
-        public Passenger SaveNewPassenger(Passenger passenger)
+        public Passenger SaveNewPassenger([FromBody]Passenger passenger)
         {
             return passengerService.Save(passenger);
         }
 
         [HttpPatch("")]
-        public void UpdatePassenger(PassengerInfoDto dto)
+        public void UpdatePassenger([FromBody]PassengerInfoDto dto)
         {
             passengerService.Update(dto);
         }

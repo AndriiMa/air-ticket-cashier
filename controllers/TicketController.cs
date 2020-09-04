@@ -23,13 +23,13 @@ namespace air_ticket_cashier.controllers
         }
 
         [HttpPost("")]
-        public Ticket CreateTicket(Ticket ticket)
+        public Ticket CreateTicket([FromBody]Ticket ticket)
         {
             return ticketService.Save(ticket);
         }
 
         [HttpPost("/{id}")]
-        public Ticket BuyTicket(int id, PassengerIdDto passengerId)
+        public Ticket BuyTicket(int id, [FromBody]PassengerIdDto passengerId)
         {
             Passenger passenger = passengerService.GetById(id);
             return ticketService.BuyTicketWithId(id, passenger);
