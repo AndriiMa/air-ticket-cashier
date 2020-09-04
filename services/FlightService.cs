@@ -27,7 +27,7 @@ namespace air_ticket_cashier
             .FirstOrDefault();
         }
 
-        public List<Flight> GetByDeparture(DateTime departureAt)
+        public List<Flight> GetByDeparture(FlightDepartureDto departureAt)
         {
             return context.Flights.Where(f => f.DeparureAt.Equals(departureAt))
             .ToList();

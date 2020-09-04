@@ -27,9 +27,9 @@ namespace air_ticket_cashier
         }
 
         [HttpGet("")]
-        public List<Flight> GetFlightByDeparture(DepartureDto departureDto)
+        public List<Flight> GetFlightByDeparture(FlightDepartureDto flightDepartureDto)
         {
-            return flightService.GetByDeparture(departureDto.Departure);
+            return flightService.GetByDeparture(flightDepartureDto);
         }
     }
 }

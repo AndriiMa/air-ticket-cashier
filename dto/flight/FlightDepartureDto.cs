@@ -2,7 +2,7 @@ using System;
 
 namespace air_ticket_cashier
 {
-    public class DepartureDto
+    public class FlightDepartureDto
     {
         public DateTime Departure { get; set; }
     }
