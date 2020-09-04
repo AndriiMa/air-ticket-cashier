@@ -31,5 +31,20 @@ namespace air_ticket_cashier
             context.SaveChanges();
         }
 
+        public Ticket BuyTicketWithId(int ID, Passenger passenger)
+        {
+            Ticket ticket = GetById(ID);
+            if (ticket.passenger == null)
+            {
+                ticket.passenger = passenger;
+                Update(ticket);
+                return ticket;
+            }
+            else
+            {
+                throw new TicketIsAlreadyBoughtException("Sorry but ticket is already bought");
+            }
+
+        }
     }
 }
