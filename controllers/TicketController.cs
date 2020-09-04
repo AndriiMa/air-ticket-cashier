@@ -1,0 +1,38 @@
+using Microsoft.AspNetCore.Mvc;
+
+namespace air_ticket_cashier.controllers
+{
+    [ApiController]
+    [Route("/api/tickets")]
+    public class TicketController : ControllerBase
+    {
+
+        private TicketService ticketService;
+        private PassengerService passengerService;
+
+        public TicketController(TicketService ticketService, PassengerService passengerService)
+        {
+            this.ticketService = ticketService;
+            this.passengerService = passengerService;
+        }
+
+        [HttpGet("/{id}")]
+        public Ticket GetTicketById(int id)
+        {
+            return ticketService.GetById(id);
+        }
+
+        [HttpPost("")]
+        public Ticket CreateTicket(Ticket ticket)
+        {
+            return ticketService.Save(ticket);
+        }
+
+        [HttpPost("/{id}")]
+        public Ticket BuyTicket(int id, PassengerIdDto passengerId)
+        {
+            Passenger passenger = passengerService.GetById(id);
+            return ticketService.BuyTicketWithId(id, passenger);
+        }
+    }
+}
