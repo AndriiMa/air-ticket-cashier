@@ -32,6 +32,13 @@ namespace air_ticket_cashier
             return context.Flights.Where(f => f.DeparureAt.Equals(departureAt))
             .ToList();
         }
+
+        public Flight SaveFlight(Flight flight)
+        {
+            context.Flights.Add(flight);
+            context.SaveChanges();
+            return flight;
+        }
     }
 
 }

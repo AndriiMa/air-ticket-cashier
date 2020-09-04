@@ -30,5 +30,13 @@ namespace air_ticket_cashier
                                  .ToList();
             return directions;
         }
+
+        public Direction SaveDirection(Direction direction)
+        {
+            context.Directions.Add(direction);
+            context.SaveChanges();
+            return direction;
+        }
+
     }
 }

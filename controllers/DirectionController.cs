@@ -21,6 +21,12 @@ namespace air_ticket_cashier
             return directionService.GetAvailable();
         }
 
+        [HttpPost("")]
+        public Direction CreateDirection([FromBody] Direction direction)
+        {
+            return directionService.SaveDirection(direction);
+        }
+
     }
 
 }
