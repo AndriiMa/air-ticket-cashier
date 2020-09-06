@@ -27,6 +27,12 @@ namespace air_ticket_cashier
             return directionService.SaveDirection(direction);
         }
 
+        [HttpPatch("{id}")]
+        public void SetAvailabilityById(int id, [FromBody] AvailabilityDto dto)
+        {
+            directionService.SetAvailabilityById(id, dto.Available);
+        }
+
     }
 
 }
