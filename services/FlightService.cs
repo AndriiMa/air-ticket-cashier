@@ -27,6 +27,23 @@ namespace air_ticket_cashier
             .FirstOrDefault();
         }
 
+        public List<Flight> GetFlightsInPeriod(DateTime from, DateTime to)
+        {
+            if (from <= DateTime.Now || from == null)
+            {
+                from = DateTime.Now;
+            }
+
+            if (to <= DateTime.Now || to == null)
+            {
+                to = DateTime.Now;
+            }
+
+            return context.Flights.Where(f =>
+             from >= f.DeparureAt && f.DeparureAt <= to)
+             .ToList();
+        }
+
         public List<Flight> GetByDeparture(FlightDepartureDto departureAt)
         {
             return context.Flights.Where(f => f.DeparureAt.Equals(departureAt))
@@ -40,7 +57,7 @@ namespace air_ticket_cashier
             return flight;
         }
 
-         public void SetAvailabilityById(int id, bool avaliable)
+        public void SetAvailabilityById(int id, bool avaliable)
         {
             Flight flight = GetById(id);
             flight.Avaliable = avaliable;
@@ -48,7 +65,7 @@ namespace air_ticket_cashier
             context.Flights.Update(flight);
             context.SaveChanges();
         }
-        
+
     }
 
 }
