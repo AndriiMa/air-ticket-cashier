@@ -31,6 +31,15 @@ namespace air_ticket_cashier
             return directions;
         }
 
+        public void SetAvailabilityById(int id, bool avaliable)
+        {
+            Direction direction = GetById(id);
+            direction.Avaliable = avaliable;
+
+            context.Directions.Update(direction);
+            context.SaveChanges();
+        }
+
         public Direction SaveDirection(Direction direction)
         {
             context.Directions.Add(direction);
