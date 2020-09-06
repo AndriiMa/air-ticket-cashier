@@ -39,6 +39,16 @@ namespace air_ticket_cashier
             context.SaveChanges();
             return flight;
         }
+
+         public void SetAvailabilityById(int id, bool avaliable)
+        {
+            Flight flight = GetById(id);
+            flight.Avaliable = avaliable;
+
+            context.Flights.Update(flight);
+            context.SaveChanges();
+        }
+        
     }
 
 }
