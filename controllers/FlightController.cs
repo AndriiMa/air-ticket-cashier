@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace air_ticket_cashier
 {
     [ApiController]
-    [Route("/api/flights")]
+    [Route("api/flights")]
     public class FlightController : ControllerBase
     {
         private FlightService flightService;
@@ -20,7 +20,7 @@ namespace air_ticket_cashier
             return flightService.GetAvailable();
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public Flight GetFlightById(int id)
         {
             return flightService.GetById(id);

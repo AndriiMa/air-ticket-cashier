@@ -15,7 +15,7 @@ namespace air_ticket_cashier
             this.directionService = directionService;
         }
 
-        [HttpGet("/available")]
+        [HttpGet("available")]
         public List<Direction> GetAvailableDirections()
         {
             return directionService.GetAvailable();

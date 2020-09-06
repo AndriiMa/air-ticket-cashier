@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace air_ticket_cashier.controllers
 {
     [ApiController]
-    [Route("/api/tickets")]
+    [Route("api/tickets")]
     public class TicketController : ControllerBase
     {
 
@@ -16,7 +16,7 @@ namespace air_ticket_cashier.controllers
             this.passengerService = passengerService;
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public Ticket GetTicketById(int id)
         {
             return ticketService.GetById(id);
@@ -28,7 +28,7 @@ namespace air_ticket_cashier.controllers
             return ticketService.Save(ticket);
         }
 
-        [HttpPost("/{id}")]
+        [HttpPost("{id}")]
         public Ticket BuyTicket(int id, [FromBody]PassengerIdDto passengerId)
         {
             Passenger passenger = passengerService.GetById(id);

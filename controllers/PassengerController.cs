@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace air_ticket_cashier
 {
     [ApiController]
-    [Route("/api/passengers")]
+    [Route("api/passengers")]
     public class PassengerController : ControllerBase
     {
         private PassengerService passengerService;
@@ -13,7 +13,7 @@ namespace air_ticket_cashier
             this.passengerService = passengerService;
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public Passenger GetPassengerById(int id)
         {
             return passengerService.GetById(id);
@@ -31,7 +31,7 @@ namespace air_ticket_cashier
             passengerService.Update(dto);
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         public void DeletePassengerById(int id)
         {
             passengerService.DeleteById(id);
