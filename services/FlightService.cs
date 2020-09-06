@@ -27,7 +27,7 @@ namespace air_ticket_cashier
             .FirstOrDefault();
         }
 
-        public List<Flight> GetFlightsInPeriod(DateTime from, DateTime to)
+        public List<Flight> GetAllInPeriod(DateTime from, DateTime to)
         {
             if (from <= DateTime.Now || from == null)
             {
