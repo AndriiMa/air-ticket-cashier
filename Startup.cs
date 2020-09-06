@@ -44,8 +44,6 @@ namespace air_ticket_cashier
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
