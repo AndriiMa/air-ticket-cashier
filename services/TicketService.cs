@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace air_ticket_cashier
@@ -46,6 +48,16 @@ namespace air_ticket_cashier
                 throw new TicketIsAlreadyBoughtException("Sorry but ticket is already bought or not available");
             }
 
+        }
+
+        public List<Ticket> BuyTicketsByIds(IEnumerable<Int32> ids, Passenger passenger)
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            foreach (int id in ids)
+            {
+                tickets.Add(BuyTicketWithId(id, passenger));
+            }
+            return tickets;
         }
     }
 }
