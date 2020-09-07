@@ -8,34 +8,43 @@ namespace air_ticket_cashier
     public class FlightController : ControllerBase
     {
         private FlightService flightService;
+        private DirectionService directionService;
+        private FlightMapper flightMapper;
 
-        public FlightController(FlightService flightService)
+        public FlightController(FlightService flightService, DirectionService directionService)
         {
             this.flightService = flightService;
+            this.directionService = directionService;
+            this.flightMapper = new FlightMapper();
         }
 
         [HttpGet("")]
-        public List<Flight> GetAvailableFlights()
+        public List<FlightDto> GetAvailableFlights()
         {
-            return flightService.GetAvailable();
+            List<Flight> flights = flightService.GetAvailable();
+            return flightMapper.MapToList(flights);
         }
 
         [HttpGet("{id}")]
-        public Flight GetFlightById(int id)
+        public FlightDto GetFlightById(int id)
         {
-            return flightService.GetById(id);
+            Flight flight = flightService.GetById(id);
+            return flightMapper.MapToDto(flight);
         }
 
         [HttpGet("/by-departure")]
-        public List<Flight> GetFlightByDeparture([FromBody] FlightDepartureDto flightDepartureDto)
+        public List<FlightDto> GetFlightByDeparture([FromBody] FlightDepartureDto flightDepartureDto)
         {
-            return flightService.GetByDeparture(flightDepartureDto);
+            List<Flight> flights = flightService.GetByDeparture(flightDepartureDto);
+            return flightMapper.MapToList(flights);
         }
 
         [HttpPost("")]
-        public Flight CreateFlight([FromBody] Flight flight)
+        public FlightDto CreateFlight([FromBody] FlightDto dto)
         {
-            return flightService.SaveFlight(flight);
+            Flight flight = Create(dto);
+            Flight savedFlight = flightService.SaveFlight(flight);
+            return flightMapper.MapToDto(savedFlight);
         }
 
         [HttpPatch("{id}")]
@@ -45,9 +54,19 @@ namespace air_ticket_cashier
         }
 
         [HttpGet("/by-period")]
-        public List<Flight> GetFlightsInPeriod([FromBody] FlightDatesDto dto)
+        public List<FlightDto> GetFlightsInPeriod([FromBody] FlightDatesDto dto)
         {
-            return flightService.GetAllInPeriod(dto.FromDate, dto.ToDate);
+            List<Flight> flights = flightService.GetAllInPeriod(dto.FromDate, dto.ToDate);
+            return flightMapper.MapToList(flights);
+        }
+
+        private Flight Create(FlightDto dto)
+        {
+            Direction direction = directionService.GetById(dto.DirectionId);
+            Flight flight = flightMapper.MapToObject(dto);
+            flight.Direction = direction;
+
+            return flight;
         }
 
     }
