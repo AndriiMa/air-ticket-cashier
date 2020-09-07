@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace air_ticket_cashier
 {
@@ -23,7 +24,9 @@ namespace air_ticket_cashier
 
         public Flight GetById(int id)
         {
-            return context.Flights.Where(f => f.ID == id)
+            return context.Flights
+            .Include(flight => flight.Direction)
+            .Where(f => f.ID == id)
             .FirstOrDefault();
         }
 
