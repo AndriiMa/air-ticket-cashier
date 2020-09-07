@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace air_ticket_cashier.controllers
@@ -23,16 +24,23 @@ namespace air_ticket_cashier.controllers
         }
 
         [HttpPost("")]
-        public Ticket CreateTicket([FromBody]Ticket ticket)
+        public Ticket CreateTicket([FromBody] Ticket ticket)
         {
             return ticketService.Save(ticket);
         }
 
-        [HttpPost("{id}")]
-        public Ticket BuyTicket(int id, [FromBody]PassengerIdDto passengerId)
+        [HttpPost("{id}/buy")]
+        public Ticket BuyTicket(int id, [FromBody] PassengerIdDto passengerId)
         {
             Passenger passenger = passengerService.GetById(id);
             return ticketService.BuyTicketWithId(id, passenger);
+        }
+
+        [HttpPost("buy-couple")]
+        public List<Ticket> ButTicketsByIds([FromBody] PassengerWithTicketsIdsDto dto)
+        {
+            Passenger passenger = passengerService.GetById(dto.PassengerId);
+            return ticketService.BuyTicketsByIds(dto.Ids, passenger);
         }
     }
 }

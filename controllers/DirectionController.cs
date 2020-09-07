@@ -32,6 +32,7 @@ namespace air_ticket_cashier
         {
             directionService.SetAvailabilityById(id, dto.Available);
         }
+        
 
     }
 
