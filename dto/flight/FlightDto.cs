@@ -1,6 +1,6 @@
 using System;
 
-namespace air_ticket_cashier.dto.flight
+namespace air_ticket_cashier
 {
     public class FlightDto
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace air_ticket_cashier.dto.flight.mapper
+namespace air_ticket_cashier
 {
     public class FlightMapper
     {
