@@ -31,6 +31,9 @@ namespace air_ticket_cashier
             options.UseNpgsql(Configuration.GetConnectionString("CashierContext"))
             .UseSnakeCaseNamingConvention());
             services.AddScoped<DirectionService>();
+            services.AddScoped<FlightService>();
+            services.AddScoped<PassengerService>();
+            services.AddScoped<TicketService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
