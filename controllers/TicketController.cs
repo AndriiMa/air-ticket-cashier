@@ -35,5 +35,12 @@ namespace air_ticket_cashier.controllers
             Passenger passenger = passengerService.GetById(id);
             return ticketService.BuyTicketWithId(id, passenger);
         }
+
+        [HttpPost("buy-couple")]
+        public List<Ticket> ButTicketsByIds([FromBody] PassengerWithTicketsIdsDto dto)
+        {
+            Passenger passenger = passengerService.GetById(dto.PassengerId);
+            return ticketService.BuyTicketsByIds(dto.Ids, passenger);
+        }
     }
 }
