@@ -44,5 +44,11 @@ namespace air_ticket_cashier
             flightService.SetAvailabilityById(id, dto.Available);
         }
 
+        [HttpGet("")]
+        public List<Flight> GetFlightsInPeriod([FromBody] FlightDatesDto dto)
+        {
+            return flightService.GetAllInPeriod(dto.FromDate, dto.ToDate);
+        }
+
     }
 }
