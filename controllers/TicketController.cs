@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace air_ticket_cashier.controllers
 {
@@ -31,12 +32,20 @@ namespace air_ticket_cashier.controllers
             return ticketMapper.mapToDto(ticket);
         }
 
-        [HttpPost("")]
-        public TicketDto CreateTicket([FromBody] TicketDto ticketDto)
+        // [HttpPost("")]
+        // public TicketDto CreateTicket([FromBody] TicketDto ticketDto)
+        // {
+        //     Ticket ticket = Create(ticketDto);
+        //     Ticket savedTicket = ticketService.Save(ticket);
+        //     return ticketMapper.mapToDto(savedTicket);
+        // }
+
+        [HttpPost]
+        public List<Int32> CreateTicketsByFlightAndCost(TicketsCreationDto dto)
         {
-            Ticket ticket = Create(ticketDto);
-            Ticket savedTicket = ticketService.Save(ticket);
-            return ticketMapper.mapToDto(savedTicket);
+            Flight flight = flightService.GetById(dto.FlightId);
+            List<Int32> ids = ticketService.SaveByFlightAndCost(dto.Cost, flight);
+            return ids;
         }
 
         [HttpPost("{id}/buy")]
