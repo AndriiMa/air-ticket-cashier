@@ -26,7 +26,7 @@ namespace air_ticket_cashier
             return flightService.GetById(id);
         }
 
-        [HttpGet("")]
+        [HttpGet("/by-departure")]
         public List<Flight> GetFlightByDeparture([FromBody] FlightDepartureDto flightDepartureDto)
         {
             return flightService.GetByDeparture(flightDepartureDto);
@@ -44,7 +44,7 @@ namespace air_ticket_cashier
             flightService.SetAvailabilityById(id, dto.Available);
         }
 
-        [HttpGet("")]
+        [HttpGet("/by-period")]
         public List<Flight> GetFlightsInPeriod([FromBody] FlightDatesDto dto)
         {
             return flightService.GetAllInPeriod(dto.FromDate, dto.ToDate);
