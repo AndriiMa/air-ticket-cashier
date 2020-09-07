@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace air_ticket_cashier
 {
     public class TicketMapper
@@ -26,6 +28,18 @@ namespace air_ticket_cashier
             dto.SeatNo = ticket.SeatNo;
 
             return dto;
+        }
+
+        public List<TicketDto> mapToList(List<Ticket> tickets)
+        {
+            List<TicketDto> dtos = new List<TicketDto>();
+
+            foreach (Ticket ticket in tickets)
+            {
+                dtos.Add(mapToDto(ticket));
+            }
+
+            return dtos;
         }
 
     }
