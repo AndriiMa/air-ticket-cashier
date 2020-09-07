@@ -40,13 +40,13 @@ namespace air_ticket_cashier
             }
 
             return context.Flights.Where(f =>
-             from >= f.DeparureAt && f.DeparureAt <= to)
+             from >= f.DepartureAt && f.DepartureAt <= to)
              .ToList();
         }
 
         public List<Flight> GetByDeparture(FlightDepartureDto departureAt)
         {
-            return context.Flights.Where(f => f.DeparureAt.Equals(departureAt))
+            return context.Flights.Where(f => f.DepartureAt.Equals(departureAt))
             .ToList();
         }
 

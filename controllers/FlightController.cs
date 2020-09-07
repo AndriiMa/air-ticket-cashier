@@ -32,7 +32,7 @@ namespace air_ticket_cashier
             return flightMapper.MapToDto(flight);
         }
 
-        [HttpGet("/by-departure")]
+        [HttpGet("by-departure")]
         public List<FlightDto> GetFlightByDeparture([FromBody] FlightDepartureDto flightDepartureDto)
         {
             List<Flight> flights = flightService.GetByDeparture(flightDepartureDto);
@@ -53,7 +53,7 @@ namespace air_ticket_cashier
             flightService.SetAvailabilityById(id, dto.Available);
         }
 
-        [HttpGet("/by-period")]
+        [HttpGet("by-period")]
         public List<FlightDto> GetFlightsInPeriod([FromBody] FlightDatesDto dto)
         {
             List<Flight> flights = flightService.GetAllInPeriod(dto.FromDate, dto.ToDate);

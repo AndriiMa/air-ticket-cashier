@@ -11,7 +11,7 @@ namespace air_ticket_cashier
 
             dto.ID = flight.ID;
             dto.ArriveAt = flight.ArriveAt;
-            dto.DeparureAt = flight.DeparureAt;
+            dto.DepartureAt = flight.DepartureAt;
             dto.Avaliable = flight.Avaliable;
             dto.DirectionId = flight.Direction.ID;
 
@@ -24,7 +24,7 @@ namespace air_ticket_cashier
 
             flight.ID = dto.ID;
             flight.ArriveAt = dto.ArriveAt;
-            flight.DeparureAt = dto.DeparureAt;
+            flight.DepartureAt = dto.DepartureAt;
             flight.Avaliable = dto.Avaliable;
 
             return flight;
