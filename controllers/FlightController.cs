@@ -37,5 +37,12 @@ namespace air_ticket_cashier
         {
             return flightService.SaveFlight(flight);
         }
+
+        [HttpPatch("{id}")]
+        public void SetAvailabilityById(int id, [FromBody] AvailabilityDto dto)
+        {
+            flightService.SetAvailabilityById(id, dto.Available);
+        }
+
     }
 }

@@ -35,7 +35,7 @@ namespace air_ticket_cashier
         public Ticket BuyTicketWithId(int ID, Passenger passenger)
         {
             Ticket ticket = GetById(ID);
-            if (ticket.passenger == null)
+            if (ticket.passenger == null && ticket.flight.Avaliable == true)
             {
                 ticket.passenger = passenger;
                 Update(ticket);
@@ -43,7 +43,7 @@ namespace air_ticket_cashier
             }
             else
             {
-                throw new TicketIsAlreadyBoughtException("Sorry but ticket is already bought");
+                throw new TicketIsAlreadyBoughtException("Sorry but ticket is already bought or not available");
             }
 
         }
